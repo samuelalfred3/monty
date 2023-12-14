@@ -35,16 +35,15 @@ int main(int argc, char *argv[])
 	{
 		Ldata = NULL;
 		crnt_line = getline(&Ldata, &Lsize, file);
-		data.content = Ldata;
 		count++;
+
 		if (crnt_line > 0 && data.content[0] != '#')
 		{
 			cmd_executer(file, Ldata, &stack, count);
 		}
 		free(Ldata);
 	}
-
-	free_stack(stack);
 	fclose(file);
+	free_stack(stack);
 	return (0);
 }
