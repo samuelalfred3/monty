@@ -1,57 +1,53 @@
 #include "monty.h"
 
 /**
- * push - pushes an element to the stack
- * @stack: double pointer to the top of the stack
- * @line_number: value to push to the stack
- * Return: nothing
+ * _push - a function that adds a node to a list
+ * @stack: the data structures to manipulate.
+ * @count: the line we are reading from in the file.
+ *
+ * Return: NONE
  */
-void push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **stack, unsigned int count)
 {
-	stack_t *new;
 	int n;
+	(void)count;
 
-	(void)line_number;
-
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (data.token == NULL || !is_number(data.token))
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "L%d: usage: push integer\n", count);
+		fclose(data.file);
+		free(data.content);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	if (global.argument == NULL)
+	n = atoi(data.token);
+	if (data.mode == 0)
+		add_node(stack, n);
+	else
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", global.line_number);
-		exit(EXIT_FAILURE);
+		if (stack_len(*stack) == 0)
+			add_node(stack, n);
+		else
+			add_node_end(stack, n);
 	}
-	n = atoi(global.argument);
-	if (n == 0 && strcmp(global.argument, "0") != 0)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", global.line_number);
-		exit(EXIT_FAILURE);
-	}
-	new->n = n;
-	new->prev = NULL;
-	new->next = *stack;
-	if (*stack != NULL)
-		(*stack)->prev = new;
-	*stack = new;
 }
 
 /**
- * pall - prints all values on the stack
- * @stack: double pointer to top of stack
- * @line_number: line number
+ * _pall - prints all values on the stack
+ * @stack: the stack to manipulate
+ * @count: the line we are reading from in the file.
  * Return: nothing
  */
-void pall(stack_t **stack, unsigned int line_number)
+void _pall(stack_t **stack, unsigned int count)
 {
-	stack_t *current;
-	(void)line_number;
-	current = *stack;
-	while (current != NULL)
+	(void)count;
+	stack_t *m;
+
+	m = *stack;
+	while (m != NULL)
 	{
-		printf("%d\n", current->n);
-		current = current->next;
+		printf("%d\n", m->n);
+		m = m->next;
 	}
+	free_stack(*stack);
 }
