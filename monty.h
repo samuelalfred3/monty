@@ -39,26 +39,9 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct global - Global variables used in the Monty interpreter
- * @argument: The argument associated with the current instruction
- * @line_number: The line number of the current instruction in the Monty file
- *
- * Description: This structure holds global variables that need to be shared
- * across different parts of the Monty interpreter, such as the current
- * argument being processed and the line number of the current instruction.
- */
-struct global
-{
-	char *argument;
-	unsigned int line_number;
-};
-extern struct global global;
+/* stack_ops.c */
+void push(stack_t **stack, unsigned int count);
+void pall(stack_t **stack, unsigned int count);
 
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void execute(char *line, stack_t **stack, unsigned int line_number, FILE* file);
-void free_stack(stack_t *stack);
 
-#endif /* MONTY_H */
+#endif

@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * _push - a function that adds a node to a list
+ * push - a function that adds a node to a list
  * @stack: the data structures to manipulate.
  * @count: the line we are reading from in the file.
  *
  * Return: NONE
  */
-void _push(stack_t **stack, unsigned int count)
+void push(stack_t **stack, unsigned int count)
 {
 	int n;
 	(void)count;
@@ -33,12 +33,12 @@ void _push(stack_t **stack, unsigned int count)
 }
 
 /**
- * _pall - prints all values on the stack
+ * pall - prints all values on the stack
  * @stack: the stack to manipulate
  * @count: the line we are reading from in the file.
  * Return: nothing
  */
-void _pall(stack_t **stack, unsigned int count)
+void pall(stack_t **stack, unsigned int count)
 {
 	(void)count;
 	stack_t *m;
