@@ -43,5 +43,4 @@ typedef struct instruction_s
 void push(stack_t **stack, unsigned int count);
 void pall(stack_t **stack, unsigned int count);
 
-
-#endif
+#endif /* MONTY_H */
