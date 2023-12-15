@@ -1,7 +1,5 @@
 #include "monty.h"
 
-e_info data = {NULL, NULL, NULL, 0};
-
 /**
  * main - The code of the program
  * @argv: main args array
@@ -10,6 +8,7 @@ e_info data = {NULL, NULL, NULL, 0};
  */
 int main(int argc, char *argv[])
 {
+	e_info data = {NULL, NULL, NULL, 0};
 	FILE *file;
 	char *Ldata;
 	size_t Lsize = 0;
@@ -37,7 +36,7 @@ int main(int argc, char *argv[])
 		crnt_line = getline(&Ldata, &Lsize, file);
 		count++;
 
-		if (crnt_line > 0 && data.content[0] != '#')
+		if (crnt_line > 0 && Ldata[0] != '#')
 		{
 			cmd_executer(file, Ldata, &stack, count);
 		}
