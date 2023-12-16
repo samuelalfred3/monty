@@ -6,22 +6,16 @@
  *
  * Return: 1 if the input string is a number, 0 otherwise.
  */
-
-int is_number(char *str)
+int is_number(const char *str)
 {
-	if (str == NULL)
+	if (str == NULL || *str == '\0')
 		return (0);
+
+	if (*str == '-')
+		str++;
 
 	while (*str)
 	{
-		unsigned int index = 0;
-
-		if (*str == '-')
-		{
-			str++;
-			continue;
-		}
-
 		if (!isdigit(*str))
 			return (0);
 		str++;

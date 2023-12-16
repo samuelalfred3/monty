@@ -1,20 +1,22 @@
 #include "monty.h"
 
 /**
- * pint - a function that print the value of the first node
- * @stack: the stack to manipulate
- * @count: the line we are reading from in the file.
+ * m_pint - Print the value of the first node in the stack.
+ * @stack: Pointer to stack pointer
+ * @count: Line number
  * Return: void
  */
-void pint(stack_t **stack, unsigned int count)
+void m_pint(stack_t **stack, unsigned int count)
 {
-	if (*stack == NULL)
+	stack_t *top = *stack;
+
+	if (top == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", count);
+		fprintf(stderr, "L%u: unable to pint, stack is empty\n", count);
 		fclose(data.file);
 		free(data.content);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", top->n);
 }

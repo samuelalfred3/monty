@@ -1,29 +1,35 @@
 #include "monty.h"
 
 /**
- * pchar - This prints the value of the character number
- * @stack: The pointer to stack pointer
- * @count: The line number
+ * m_pchar - Print the value of the character at the top of the stack.
+ * @stack: Pointer to stack pointer
+ * @count: Line number
  * Return: Nothing
  */
-void pchar(stack_t **stack, unsigned int count)
+void m_pchar(stack_t **stack, unsigned int count)
 {
-	stack_t *p;
+	stack_t *top;
 
-	p = *stack;
-	if (p == NULL)
+	top = *stack;
+
+	if (top == NULL)
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", count);
+		fprintf(stderr, "L%d: unable to pchar, stack is empty\n", count);
 		fclose(data.file);
 		free(data.content);
 		exit(EXIT_FAILURE);
 	}
-	if (p->n < 0 || p->n > 127)
+
+	int value = top->n;
+
+	if (value < 0 || value > 127)
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
+		fprintf(stderr, "L%d: unable to pchar, value out of ASCII range\n", count);
 		fclose(data.file);
 		free(data.content);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", p->n);
+
+	putchar(value);
+	putchar('\n');
 }

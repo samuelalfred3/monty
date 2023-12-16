@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * mul - is a function that multiplies the top two elements of the stack.
+ * m_mul - is a function that multiplies the top two elements of the stack.
  * @stack: data structure to manipulate.
  * @count: line we are reading from in the file.
  *
  * Return: Nothing
  */
-void mul(stack_t **stack, unsigned int count)
+void m_mul(stack_t **stack, unsigned int count)
 {
 	stack_t *p;
 	int val;
