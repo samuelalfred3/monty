@@ -1,22 +1,22 @@
 #include "monty.h"
 
 /**
- * rotl - This rotates the stack to the top
- * @stack: The stack to manipulate
+ * m_rotl - This rotates the stack to the top
+ * @stack: Pointer to stack pointer
  * @count: The Line number
  * Return: Nothing
  */
-void rotl(stack_t **stack, unsigned int count)
+void m_rotl(stack_t **stack, unsigned int count)
 {
-	stack_t *tmp;
-	int n;
+	stack_t *temp;
+	int value;
 	(void)count;
 
 	if (!(*stack) || stack_len(*stack) == 1)
 		return;
 
-	n = (*stack)->n;
-	tmp = *stack;
+	value = (*stack)->n;
+	temp = *stack;
 	(*stack) = (*stack)->next;
 	add_node_end(stack, n);
 	free(tmp);

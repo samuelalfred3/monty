@@ -1,15 +1,15 @@
 #include "monty.h"
 
 /**
- * rotr - This rotates the stack to the bottom
+ * m_rotr - This rotates the stack to the bottom
  * @stack: stack to manipulate
  * @count: Line number (unused parameter)
  * Return: Nothing
  */
-void rotr(stack_t **stack, unsigned int count)
+void m_rotr(stack_t **stack, unsigned int count)
 {
 	stack_t *temp;
-	int n;
+	int value;
 	(void)count;
 
 	if (!(*stack) || stack_len(*stack) == 1)
@@ -18,13 +18,13 @@ void rotr(stack_t **stack, unsigned int count)
 	while ((*stack)->next->next)
 		(*stack) = (*stack)->next;
 
-	n = (*stack)->next->n;
+	value = (*stack)->next->n;
 	temp = (*stack)->next;
 	(*stack)->next = NULL;
 
 	while ((*stack)->prev)
 		(*stack) = (*stack)->prev;
 
-	add_node(stack, n);
+	add_node(stack, value);
 	free(temp);
 }

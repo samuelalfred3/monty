@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * stack - This sets the format of the data to a stack (LIFO)
+ * m_stack - This sets the format of the data to a stack (LIFO)
  * @stack: The stack to manipulate (unused)
  * @count: Line number (unused)
  * Return: Nothing
  */
-void stack(stack_t **stack, unsigned int count)
+void m_stack(stack_t **stack, unsigned int count)
 {
 	(void)stack;
 	(void)count;

@@ -1,32 +1,20 @@
 #include "monty.h"
 
 /**
- * pstr - This prints the values of each character number
- * @stack: The pointer to stack pointer
- * @count: The line number
+ * m_pstr - Print the values of each printable character in the stack.
+ * @stack: Pointer to stack pointer
+ * @count: Line number
  * Return: Nothing
  */
-void pstr(stack_t **stack, unsigned int count)
+void m_pstr(stack_t **stack, unsigned int count)
 {
-	stack_t *p;
+	stack_t *current = *stack;
 	(void)count;
 
-	if (*stack == NULL)
+	while (current != NULL && current->n > 0 && current->n <= 127)
 	{
-		putchar('\n');
-		return;
+		putchar(current->n);
+		current = current->next;
 	}
-
-	p = *stack;
-	while (p != NULL)
-	{
-		if (p->n <= 0 || p->n > 127)
-		{
-			break;
-		}
-		printf("%c", p->n);
-		p = p->next;
-	}
-
 	putchar('\n');
 }

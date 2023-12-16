@@ -8,10 +8,9 @@
  */
 void push_start(stack_t **stack, int n)
 {
-	stack_t *new_node;
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(*stack);
@@ -19,11 +18,10 @@ void push_start(stack_t **stack, int n)
 	}
 	new_node->n = n;
 	new_node->prev = NULL;
-	if (*stack != NULL)
-	{
-		(*stack)->prev = new_node;
-	}
 	new_node->next = *stack;
+
+	if (*stack)
+		(*stack)->prev = new_node;
 	*stack = new_node;
 }
 
@@ -35,10 +33,9 @@ void push_start(stack_t **stack, int n)
  */
 void push_end(stack_t **stack, const int n)
 {
-	stack_t *new, *prev_node;
+	stack_t *new = malloc(sizeof(stack_t));
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (!new)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_stack(*stack);
@@ -47,18 +44,19 @@ void push_end(stack_t **stack, const int n)
 
 	new->n = n;
 	new->next = NULL;
-	if ((*stack) == NULL)
+
+	if (*stack)
 	{
 		new->prev = NULL;
 		(*stack) = new;
 	}
 	else
 	{
-		prev_node = (*stack);
-		while (prev_node->next != NULL)
-		{
+		stack_t *prev_node = *stack;
+
+		while (prev_node->next)
 			prev_node = prev_node->next;
-		}
+
 		prev_node->next = new;
 		new->prev = prev_node;
 	}

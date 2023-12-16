@@ -1,17 +1,17 @@
 #include "monty.h"
 
 /**
- * sub - a function that subtracts the top element from the second top element.
+ * m_sub - a func that subtracts the top element from the second top element.
  * @stack: the data structure to manipulate.
  * @count: the line we are reading from in the file.
  *
  * Return: Nothing
  */
-void sub(stack_t **stack, unsigned int count)
+void m_sub(stack_t **stack, unsigned int count)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't sub, stack too short\n", count);
+		fprintf(stderr, "L%u: Unable to perform sub, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 

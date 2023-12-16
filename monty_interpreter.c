@@ -40,7 +40,7 @@ int exec_command(FILE *file, char *Ldata, stack_t **stack, unsigned int count)
 	}
 	if (oper && matcher[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", count, oper);
+		fprintf(stderr, "L%d: unknown command %s\n", count, oper);
 		fclose(file);
 		free(Ldata);
 		free_stack(*stack);

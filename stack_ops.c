@@ -1,53 +1,58 @@
 #include "monty.h"
 
 /**
- * push - a function that adds a node to a list
- * @stack: the data structures to manipulate.
- * @count: the line we are reading from in the file.
+ * m_push - Add a node to the stack.
+ * @stack: Pointer to stack pointer.
+ * @count: Line number
  *
- * Return: NONE
+ * Return: Nothing
  */
-void push(stack_t **stack, unsigned int count)
+void m_push(stack_t **stack, unsigned int count)
 {
-	int n;
+	int value;
 	(void)count;
 
 	if (data.token == NULL || !is_number(data.token))
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", count);
+		fprintf(stderr, "L%d: invalid usage of push, provide an integer\n", count);
 		fclose(data.file);
 		free(data.content);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	n = atoi(data.token);
+	value = atoi(data.token);
 	if (data.mode == 0)
-		add_node(stack, n);
+		add_node(stack, value);
 	else
 	{
 		if (stack_len(*stack) == 0)
-			add_node(stack, n);
+			add_node(stack, value);
 		else
-			add_node_end(stack, n);
+			add_node_end(stack, value);
 	}
 }
 
 /**
- * pall - prints all values on the stack
+ * m_pall - prints all values on the stack
  * @stack: the stack to manipulate
  * @count: the line we are reading from in the file.
  * Return: nothing
  */
-void pall(stack_t **stack, unsigned int count)
+void m_pall(stack_t **stack, unsigned int count)
 {
 	(void)count;
-	stack_t *m;
 
-	m = *stack;
-	while (m != NULL)
+	if (stack == NULL || *stack == NULL)
 	{
-		printf("%d\n", m->n);
-		m = m->next;
+		fprintf(stderr, "Error: Stack is empty\n");
+			return;
+	}
+	stack_t *current = *stack;
+
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
 	}
 	free_stack(*stack);
 }
