@@ -21,7 +21,9 @@ void push_start(stack_t **stack, int n)
 	new_node->next = *stack;
 
 	if (*stack)
+	{
 		(*stack)->prev = new_node;
+	}
 	*stack = new_node;
 }
 
@@ -34,6 +36,7 @@ void push_start(stack_t **stack, int n)
 void push_end(stack_t **stack, const int n)
 {
 	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *prev_node;
 
 	if (!new)
 	{
@@ -41,7 +44,6 @@ void push_end(stack_t **stack, const int n)
 		free_my_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-
 	new->n = n;
 	new->next = NULL;
 
@@ -52,12 +54,12 @@ void push_end(stack_t **stack, const int n)
 	}
 	else
 	{
-		stack_t *prev_node = *stack;
+	prev_node = *stack;
 
-		while (prev_node->next)
-			prev_node = prev_node->next;
+	while (prev_node->next)
+		prev_node = prev_node->next;
 
-		prev_node->next = new;
-		new->prev = prev_node;
+	prev_node->next = new;
+	new->prev = prev_node;
 	}
 }

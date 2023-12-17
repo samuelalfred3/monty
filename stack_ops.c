@@ -56,5 +56,4 @@ void m_pall(stack_t **stack, unsigned int count)
 		printf("%d\n", current->n);
 		current = current->next;
 	}
-	free_my_stack(*stack);
 }
