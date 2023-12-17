@@ -12,7 +12,7 @@ void push_start(stack_t **stack, int n)
 
 	if (!new_node)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "Error: Unable to allocate memory for new node\n");
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -37,7 +37,7 @@ void push_end(stack_t **stack, const int n)
 
 	if (!new)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "Error: Unable to allocate memory for new node\n");
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}

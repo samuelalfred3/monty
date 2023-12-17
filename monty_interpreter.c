@@ -12,12 +12,12 @@
 int exec_command(FILE *file, char *Ldata, stack_t **stack, unsigned int count)
 {
 	instruction_t matcher[] = {
-		{"push", _push}, {"pall", _pall}, {"pint", _pint},
-		{"pop", _pop}, {"swap", _swap}, {"add", _add},
-		{"nop", _nop}, {"sub", _sub}, {"div", _div},
-		{"mul", _mul}, {"mod", _mod}, {"pchar", _pchar},
-		{"pstr", _pstr}, {"rotl", _rotl}, {"rotr", _rotr},
-		{"stack", _stack}, {"queue", _queue}, {NULL, NULL},
+		{"push", m_push}, {"pall", m_pall}, {"pint", m_pint},
+		{"pop", m_pop}, {"swap", m_swap}, {"add", m_add},
+		{"nop", m_nop}, {"sub", m_sub}, {"div", m_div},
+		{"mul", m_mul}, {"mod", m_mod}, {"pchar", m_pchar},
+		{"pstr", m_pstr}, {"rotl", m_rotl}, {"rotr", m_rotr},
+		{"stack", m_stack}, {"queue", m_queue}, {NULL, NULL},
 	};
 	unsigned int i = 0;
 	char *oper = strtok(Ldata, SEPARATORS);

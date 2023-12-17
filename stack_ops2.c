@@ -18,7 +18,7 @@ void m_stack(stack_t **stack, unsigned int count)
  * @stack: Double linked list stack
  * Return: Nothing
  */
-void free_stack(stack_t *stack)
+void free_my_stack(stack_t *stack)
 {
 	stack_t *next;
 
@@ -31,19 +31,19 @@ void free_stack(stack_t *stack)
 }
 
 /**
- * stack_len - This counts stack nodes
+ * get_stack_size - This counts stack nodes
  * @h: Double linked list head
- * Return: size of element printed
+ * Return: size of the stack
  */
-size_t stack_len(const stack_t *h)
+size_t get_stack_size(const stack_t *h)
 {
-	const stack_t *copy = h;
-	size_t _size = 0;
+	const stack_t *current = h;
+	size_t stack_size = 0;
 
-	while (copy)
+	while (current)
 	{
-		_size++;
-		copy = copy->next;
+		stack_size++;
+		current = current->next;
 	}
-	return (_size);
+	return stack_size;
 }
