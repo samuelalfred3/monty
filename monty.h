@@ -11,6 +11,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define QUEUE_MODE 1
+#define STACK_MODE 2
+
 /**
  * struct execution_info - struct that stores the execution Information needed.
  * @file: The file read from.

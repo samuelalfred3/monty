@@ -12,7 +12,7 @@ void m_rotr(stack_t **stack, unsigned int count)
 	int value;
 	(void)count;
 
-	if (!(*stack) || stack_len(*stack) == 1)
+	if (!(*stack) || get_stack_size(*stack) == 1)
 		return;
 
 	while ((*stack)->next->next)
@@ -25,6 +25,6 @@ void m_rotr(stack_t **stack, unsigned int count)
 	while ((*stack)->prev)
 		(*stack) = (*stack)->prev;
 
-	add_node(stack, value);
+	push_start(stack, value);
 	free(temp);
 }

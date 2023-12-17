@@ -9,7 +9,7 @@
 void m_mod(stack_t **stack, unsigned int count)
 {
 	stack_t *copy;
-	int val, size = stack_len(*stack);
+	int val, size = get_stack_size(*stack);
 
 	copy = *stack;
 	if (size < 2)

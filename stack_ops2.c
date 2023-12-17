@@ -45,5 +45,5 @@ size_t get_stack_size(const stack_t *h)
 		stack_size++;
 		current = current->next;
 	}
-	return stack_size;
+	return (stack_size);
 }

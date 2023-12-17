@@ -9,14 +9,17 @@
  */
 void m_add(stack_t **stack, unsigned int count)
 {
+	int sum;
+	stack_t *temp;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: addition not possible\n", count);
 		exit(EXIT_FAILURE);
 	}
-	int sum = (*stack)->n + (*stack)->next->n;
+	sum = (*stack)->n + (*stack)->next->n;
 	(*stack)->next->n = sum;
-	stack_t *temp = *stack;
+	temp = *stack;
 	*stack = (*stack)->next;
 	free(temp);
 }

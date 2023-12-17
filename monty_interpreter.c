@@ -11,6 +11,7 @@
 */
 int exec_command(FILE *file, char *Ldata, stack_t **stack, unsigned int count)
 {
+	(void)file;
 	instruction_t matcher[] = {
 		{"push", m_push}, {"pall", m_pall}, {"pint", m_pint},
 		{"pop", m_pop}, {"swap", m_swap}, {"add", m_add},
@@ -40,11 +41,9 @@ int exec_command(FILE *file, char *Ldata, stack_t **stack, unsigned int count)
 	}
 	if (oper && matcher[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%d: unknown command %s\n", count, oper);
-		fclose(file);
+		fprintf(stderr, "L%d: Error - Unknown command %s\n", count, oper);
 		free(Ldata);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
+		return (1);
 	}
-	return (1);
+	return (0);
 }

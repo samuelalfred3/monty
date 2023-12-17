@@ -17,18 +17,18 @@ void m_push(stack_t **stack, unsigned int count)
 		fprintf(stderr, "L%d: invalid usage of push, provide an integer\n", count);
 		fclose(data.file);
 		free(data.content);
-		free_stack(*stack);
+		free_my_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	value = atoi(data.token);
 	if (data.mode == 0)
-		add_node(stack, value);
+		push_start(stack, value);
 	else
 	{
-		if (stack_len(*stack) == 0)
-			add_node(stack, value);
+		if (get_stack_size(*stack) == 0)
+			push_start(stack, value);
 		else
-			add_node_end(stack, value);
+			push_end(stack, value);
 	}
 }
 
@@ -54,5 +54,5 @@ void m_pall(stack_t **stack, unsigned int count)
 		printf("%d\n", current->n);
 		current = current->next;
 	}
-	free_stack(*stack);
+	free_my_stack(*stack);
 }

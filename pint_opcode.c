@@ -15,7 +15,7 @@ void m_pint(stack_t **stack, unsigned int count)
 		fprintf(stderr, "L%u: unable to pint, stack is empty\n", count);
 		fclose(data.file);
 		free(data.content);
-		free_stack(*stack);
+		free_my_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", top->n);

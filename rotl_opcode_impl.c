@@ -12,12 +12,12 @@ void m_rotl(stack_t **stack, unsigned int count)
 	int value;
 	(void)count;
 
-	if (!(*stack) || stack_len(*stack) == 1)
+	if (!(*stack) || get_stack_size(*stack) == 1)
 		return;
 
 	value = (*stack)->n;
 	temp = *stack;
 	(*stack) = (*stack)->next;
-	add_node_end(stack, n);
-	free(tmp);
+	push_start(stack, value);
+	free(temp);
 }
