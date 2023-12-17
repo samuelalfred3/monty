@@ -9,16 +9,19 @@
  */
 void m_sub(stack_t **stack, unsigned int count)
 {
+	int result;
+	stack_t *temp;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: Unable to perform sub, stack too short\n", count);
 		exit(EXIT_FAILURE);
 	}
 
-	int result = (*stack)->next->n - (*stack)->n;
+	result = (*stack)->next->n - (*stack)->n;
 	(*stack)->next->n = result;
 
-	stack_t *temp = *stack;
+	temp = *stack;
 	*stack = (*stack)->next;
 	free(temp);
 }

@@ -40,14 +40,16 @@ void m_push(stack_t **stack, unsigned int count)
  */
 void m_pall(stack_t **stack, unsigned int count)
 {
+	stack_t *current;
+
 	(void)count;
 
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "Error: Stack is empty\n");
-			return;
+		return;
 	}
-	stack_t *current = *stack;
+	current = *stack;
 
 	while (current != NULL)
 	{

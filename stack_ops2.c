@@ -14,7 +14,7 @@ void m_stack(stack_t **stack, unsigned int count)
 }
 
 /**
- * free_stack - This Frees a stack
+ * free_my_stack - This Frees a stack
  * @stack: Double linked list stack
  * Return: Nothing
  */

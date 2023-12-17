@@ -9,6 +9,7 @@
 void m_pchar(stack_t **stack, unsigned int count)
 {
 	stack_t *top;
+	int value;
 
 	top = *stack;
 
@@ -20,7 +21,7 @@ void m_pchar(stack_t **stack, unsigned int count)
 		exit(EXIT_FAILURE);
 	}
 
-	int value = top->n;
+	value = top->n;
 
 	if (value < 0 || value > 127)
 	{

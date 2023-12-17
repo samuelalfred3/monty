@@ -9,13 +9,16 @@
  */
 void m_swap(stack_t **stack, unsigned int count)
 {
+	stack_t *top, *nextNode;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: stack too short, can't swap\n", count);
 		exit(EXIT_FAILURE);
 	}
-	stack_t *top = *stack;
-	stack_t *nextNode = top->next;
+
+	top = *stack;
+	nextNode = top->next;
 
 	top->next = nextNode->next;
 	if (nextNode->next != NULL)

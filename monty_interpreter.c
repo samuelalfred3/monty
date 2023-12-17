@@ -1,6 +1,8 @@
 #include "monty.h"
 #define SEPARATORS "\n "
 
+e_info data = {NULL, NULL, NULL, 0};
+
 /**
  * exec_command - Is a command executor
  * @file: File
@@ -11,7 +13,6 @@
 */
 int exec_command(FILE *file, char *Ldata, stack_t **stack, unsigned int count)
 {
-	(void)file;
 	instruction_t matcher[] = {
 		{"push", m_push}, {"pall", m_pall}, {"pint", m_pint},
 		{"pop", m_pop}, {"swap", m_swap}, {"add", m_add},
@@ -21,7 +22,10 @@ int exec_command(FILE *file, char *Ldata, stack_t **stack, unsigned int count)
 		{"stack", m_stack}, {"queue", m_queue}, {NULL, NULL},
 	};
 	unsigned int i = 0;
-	char *oper = strtok(Ldata, SEPARATORS);
+	char *oper;
+
+	(void)file;
+	oper = strtok(Ldata, SEPARATORS);
 
 	if (oper && oper[0] == '#')
 	{
